@@ -18,11 +18,10 @@ import (
 func main() {
     // Initialize RPC client
     client := rpc.New("https://api.mainnet-beta.solana.com")
-    
+    uint64One := uint64(1)
+
     // Create parser instance
-    parser := &parser.SolParser{
-        cli: client,
-    }
+    p := parser.NewSolParser(client)
     
     // Transaction signature to parse
     sig := solana.MustSignatureFromBase58("5zrZnZa1bNawuJofcdPUu7ZnHF13xTuyeixoVS8Ev8MmfVZtZ5kNmxaSaiB9URxp57WAwzSV9zuma9KD5eHcxyvU")
@@ -39,7 +38,7 @@ func main() {
     }
     
     // Parse swap events
-    events, err := parser.ParseSwapEvent(parsedTx)
+    events, err := p.ParseSwapEvent(parsedTx)
     if err != nil {
         panic(err)
     }
@@ -48,7 +47,7 @@ func main() {
     for _, event := range events {
         fmt.Printf("Swap Event:\n")
         fmt.Printf("  Pool: %s\n", event.PoolAddress)
-        fmt.Printf("  Market: %s\n", event.MarketProgramId) 
+        fmt.Printf("  Market: %s\n", consts.ProgramToString(event.MarketProgramId))
         fmt.Printf("  Input Token: %s Amount: %s\n", event.InToken.Code, event.InToken.Amount)
         fmt.Printf("  Output Token: %s Amount: %s\n", event.OutToken.Code, event.OutToken.Amount)
     }
