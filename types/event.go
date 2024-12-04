@@ -6,6 +6,7 @@ type TokenAmt struct {
 }
 
 type SwapTransactionEvent struct {
+	EventIndex      int      `json:"eventIndex"`
 	Sender          string   `json:"sender"`
 	Receiver        string   `json:"receiver"`
 	InToken         TokenAmt `json:"inToken"`

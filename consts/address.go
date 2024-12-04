@@ -1,0 +1,50 @@
+package consts
+
+const (
+	SOL_TOKEN_PROGRAM_ID = "So11111111111111111111111111111111111111112"
+
+	RAYDIUM_V4_PROGRAM_ID   = "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8"
+	RAYDIUM_CLMM_PROGRAM_ID = "CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK"
+	RAYDIUM_CPMM_PROGRAM_ID = "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C"
+
+	ORCA_TOKEN_SWAP_PROGRAM_ID    = "DjVE6JNiYqPL2QXyCUUh8rNjHrbz9hXHNYt99MQ59qw1"
+	ORCA_TOKEN_SWAP_V2_PROGRAM_ID = "9W959DqEETiGZocYWCQPaJ6sBmUzgfxXfqGeTEdp3aQP"
+	ORCA_WHIRL_POOL_PROGRAM_ID    = "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc"
+
+	PUMP_FUN_PROGRAM_ID = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
+
+	METEORA_DLMM_PROGRAM_ID = "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo"
+
+	PHNX_SWAP_PROGRAM_ID        = "PhoeNiXZ8ByJGLkxNfZRnkUfjvmuYqLR89jjFHGqdXY"
+	LIFINITY_SWAP_V2_PROGRAM_ID = "2wT8Yq49kHgDzXuPxZSaeLaH1qbmGXtEyPy64bL7aD3c"
+
+	// Not Implemented
+	SOLFI_PROGRAM_ID = "SoLFiHG9TfgtdUXUjWAxi3LtvYuFyDLVhBWxdMZxyCe"
+)
+
+func ProgramToString(programId string) string {
+	switch programId {
+	case RAYDIUM_V4_PROGRAM_ID:
+		return "Raydium V4"
+	case RAYDIUM_CLMM_PROGRAM_ID:
+		return "Raydium CLMM"
+	case RAYDIUM_CPMM_PROGRAM_ID:
+		return "Raydium CPMM"
+	case ORCA_TOKEN_SWAP_PROGRAM_ID:
+		return "Orca Token Swap"
+	case ORCA_TOKEN_SWAP_V2_PROGRAM_ID:
+		return "Orca Token Swap V2"
+	case ORCA_WHIRL_POOL_PROGRAM_ID:
+		return "Orca Whirlpool"
+	case PUMP_FUN_PROGRAM_ID:
+		return "Pump Fun"
+	case METEORA_DLMM_PROGRAM_ID:
+		return "Meteora DLMM"
+	case PHNX_SWAP_PROGRAM_ID:
+		return "Phnx Swap"
+	case LIFINITY_SWAP_V2_PROGRAM_ID:
+		return "Lifinity Swap V2"
+	default:
+		return programId
+	}
+}
