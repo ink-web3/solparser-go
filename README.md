@@ -56,16 +56,16 @@ func main() {
 
 Example output:
 ```go
-Swap Event 0 41:
-    Pool: 4sB6mY3veRfRtszdVL4Lg8GHuz4NKwxZvxvhr3P22xBb
-    Market: 675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8
-    Input Token: G7BJzg55Afx6Tn6J9CJfA444jMf6QJbVjgQAevNTpump Amount: 10000000000
-    Output Token: So11111111111111111111111111111111111111112 Amount: 160644272
-Swap Event 1 49:
-    Pool: 4wTV1YmiEkRvAtNtsSGPtUrqRYQMe5SKy2uB4Jjaxnjf
-    Market: 6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P
-    Input Token: So11111111111111111111111111111111111111112 Amount: 159037830
-    Output Token: Go1d8YwLymjETPqxj4ybDg6JuAMCX1cQQULErYtgpump Amount: 2755053211659
+Swap Event:
+  Pool: 4sB6mY3veRfRtszdVL4Lg8GHuz4NKwxZvxvhr3P22xBb
+  Market: Raydium V4
+  Input Token: G7BJzg55Afx6Tn6J9CJfA444jMf6QJbVjgQAevNTpump Amount: 10000000000
+  Output Token: So11111111111111111111111111111111111111112 Amount: 160644272
+Swap Event:
+  Pool: 4wTV1YmiEkRvAtNtsSGPtUrqRYQMe5SKy2uB4Jjaxnjf
+  Market: Pump Fun
+  Input Token: So11111111111111111111111111111111111111112 Amount: 159037830
+  Output Token: Go1d8YwLymjETPqxj4ybDg6JuAMCX1cQQULErYtgpump Amount: 2755053211659
 ```
 
 # Supported DEXs
