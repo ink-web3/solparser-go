@@ -40,6 +40,10 @@ type SolParser struct {
 	cli *rpc.Client
 }
 
+func NewSolParser(cli *rpc.Client) *SolParser {
+	return &SolParser{cli: cli}
+}
+
 func (s *SolParser) GetParseFuncByProgramId(programId string) (func(*rpc.ParsedInstruction) (*types.SwapTransactionEvent, error), bool) {
 	parseFuncs := map[string]func(*rpc.ParsedInstruction) (*types.SwapTransactionEvent, error){
 		consts.RAYDIUM_V4_PROGRAM_ID:         s.ParseRaydiumAmmSwapEvent,
