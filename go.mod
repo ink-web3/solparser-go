@@ -1,4 +1,4 @@
-module github.com/Umiiii/solparser
+module github.com/ink-web3/solparser-go
 
 go 1.22.0
 
