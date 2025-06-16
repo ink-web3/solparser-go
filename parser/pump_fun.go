@@ -3,11 +3,11 @@ package parser
 import (
 	"errors"
 	"fmt"
-	"github.com/Umiiii/solparser/consts"
-	"github.com/Umiiii/solparser/parser/coder"
-	"github.com/Umiiii/solparser/types"
-	"github.com/Umiiii/solparser/types/accounts"
 	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/ink-web3/solparser-go/consts"
+	"github.com/ink-web3/solparser-go/parser/coder"
+	"github.com/ink-web3/solparser-go/types"
+	"github.com/ink-web3/solparser-go/types/accounts"
 )
 
 var (

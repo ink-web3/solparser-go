@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"reflect"
 
-	types2 "github.com/Umiiii/solparser/types"
-	"github.com/Umiiii/solparser/types/accounts"
 	"github.com/gagliardetto/solana-go/rpc"
+	types2 "github.com/ink-web3/solparser-go/types"
+	"github.com/ink-web3/solparser-go/types/accounts"
 )
 
 func (s *SolParser) ParseRaydiumCpmmSwap(tx *rpc.ParsedInstruction) (*types2.SwapTransactionEvent, error) {

@@ -3,10 +3,10 @@ package parser
 import (
 	"errors"
 
-	"github.com/Umiiii/solparser/parser/coder"
-	"github.com/Umiiii/solparser/types"
-	"github.com/Umiiii/solparser/types/accounts"
 	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/ink-web3/solparser-go/parser/coder"
+	"github.com/ink-web3/solparser-go/types"
+	"github.com/ink-web3/solparser-go/types/accounts"
 )
 
 func (s *SolParser) ParseRaydiumAmmSwapEvent(ammSwapIx *rpc.ParsedInstruction) (*types.SwapTransactionEvent, error) {

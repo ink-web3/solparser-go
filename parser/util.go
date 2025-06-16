@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/Umiiii/solparser/consts"
 	"github.com/gagliardetto/solana-go"
 	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/ink-web3/solparser-go/consts"
 )
 
 func validateTransaction(tx *rpc.GetParsedTransactionResult) error {

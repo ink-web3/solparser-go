@@ -10,7 +10,7 @@ package main
 import (
     "context"
     "fmt"
-    "github.com/Umiiii/solparser"
+    "github.com/ink-web3/solparser-go"
     "github.com/gagliardetto/solana-go"
     "github.com/gagliardetto/solana-go/rpc"
 )

@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/Umiiii/solparser/parser/coder"
 	"github.com/gagliardetto/solana-go"
 	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/ink-web3/solparser-go/parser/coder"
 	"strings"
 )
 

@@ -30,7 +30,6 @@ require (
 	github.com/mr-tron/base58 v1.2.0 // indirect
 	github.com/streamingfast/logging v0.0.0-20230608130331-f22c91403091 // indirect
 	go.mongodb.org/mongo-driver v1.17.1 // indirect
-	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/ratelimit v0.2.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect

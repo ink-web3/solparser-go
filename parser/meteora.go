@@ -1,9 +1,9 @@
 package parser
 
 import (
-	"github.com/Umiiii/solparser/types"
-	"github.com/Umiiii/solparser/types/accounts"
 	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/ink-web3/solparser-go/types"
+	"github.com/ink-web3/solparser-go/types/accounts"
 	"reflect"
 )
 

@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/Umiiii/solparser/consts"
-	"github.com/Umiiii/solparser/types"
-	"github.com/Umiiii/solparser/types/accounts"
 	"github.com/gagliardetto/solana-go/rpc"
+	"github.com/ink-web3/solparser-go/consts"
+	"github.com/ink-web3/solparser-go/types"
+	"github.com/ink-web3/solparser-go/types/accounts"
 )
 
 func (s *SolParser) ParseOrcaSwapEvent(ix *rpc.ParsedInstruction) (*types.SwapTransactionEvent, error) {
