@@ -2,7 +2,11 @@ package parser
 
 import (
 	"context"
+	"github.com/gagliardetto/solana-go/rpc/jsonrpc"
+	"net/http"
+	"net/url"
 	"testing"
+	"time"
 
 	"github.com/gagliardetto/solana-go"
 	"github.com/gagliardetto/solana-go/rpc"
@@ -15,6 +19,7 @@ const (
 	InnerSellPumpFunTxHash = ""
 	InnerBuyPumpFunTxHash  = "5zrZnZa1bNawuJofcdPUu7ZnHF13xTuyeixoVS8Ev8MmfVZtZ5kNmxaSaiB9URxp57WAwzSV9zuma9KD5eHcxyvU"
 	ClmmAndAmmTxHash       = "5x3wqVsfh9VapEDeT5Zbh5o7ZC35s9swVmkVYK34bRatQSazDD4REiLZTZ92Ge5ShqUaxJyHrUFuiwxDzbRcsWug"
+	DammV2TxHash           = "ak5UqXUkpxyMKa4HUQmSrWUhmkezt3ESoPUyH547kceUceTborJGiqSQ6tBGQMg8QmWUvPRS6tyXgcAxcpwh5n9"
 )
 
 var (
@@ -23,7 +28,22 @@ var (
 )
 
 func Before(t *testing.T) {
-	testRpc = rpc.New("https://api.mainnet-beta.solana.com")
+	//testRpc = rpc.New("https://api.mainnet-beta.solana.com")
+	proxyURL, _ := url.Parse("http://127.0.0.1:7890")
+	httpClient := &http.Client{
+		Transport: &http.Transport{
+			Proxy: http.ProxyURL(proxyURL),
+		},
+		Timeout: 15 * time.Second,
+	}
+	cluster := rpc.MainNetBeta
+	testRpc = rpc.NewWithCustomRPCClient(jsonrpc.NewClientWithOpts(
+		cluster.RPC,
+		&jsonrpc.RPCClientOpts{
+			HTTPClient:    httpClient,
+			CustomHeaders: map[string]string{},
+		},
+	))
 	testParser = &SolParser{cli: testRpc}
 }
 
@@ -34,7 +54,7 @@ func TestSolParser_ParseSwapEvent(t *testing.T) {
 	ctx := context.Background()
 	opts := &rpc.GetParsedTransactionOpts{MaxSupportedTransactionVersion: intPtr,
 		Commitment: rpc.CommitmentConfirmed}
-	sig := solana.MustSignatureFromBase58(InnerBuyPumpFunTxHash)
+	sig := solana.MustSignatureFromBase58(DammV2TxHash)
 	p, err := testRpc.GetParsedTransaction(ctx, sig, opts)
 	if err != nil {
 		t.Error(err)

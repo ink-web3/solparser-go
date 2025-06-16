@@ -7,7 +7,6 @@ require (
 	github.com/avast/retry-go v3.0.0+incompatible
 	github.com/decert-me/solana-go-sdk v0.2.1
 	github.com/gagliardetto/solana-go v1.12.0
-	github.com/rs/zerolog v1.33.0
 )
 
 require (

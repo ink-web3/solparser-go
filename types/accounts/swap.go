@@ -116,7 +116,22 @@ type OrcaSwapAccounts struct {
 	FeeAccount            solana.PublicKey `idx:"8"` // Fee Account (Writable)
 	TokenProgram          solana.PublicKey `idx:"9"` // Token Program
 }
-
+type MeteoraDAMMV2SwapAccounts struct {
+	PollAuthority        solana.PublicKey `idx:"0"`
+	Pool                 solana.PublicKey `idx:"1"`
+	InputTokenAccount    solana.PublicKey `idx:"2"`
+	OutputTokenAccount   solana.PublicKey `idx:"3"`
+	TokenAVault          solana.PublicKey `idx:"4"`
+	TokenBVault          solana.PublicKey `idx:"5"`
+	TokenAMint           solana.PublicKey `idx:"6"`
+	TokenBMint           solana.PublicKey `idx:"7"`
+	Payer                solana.PublicKey `idx:"8"`
+	TokenAProgram        solana.PublicKey `idx:"9"`
+	TokenBProgram        solana.PublicKey `idx:"10"`
+	ReferralTokenAccount solana.PublicKey `idx:"11"`
+	EventAuthority       solana.PublicKey `idx:"12"`
+	Program              solana.PublicKey `idx:"13"`
+}
 type MeteoraDLMMSwapAccounts struct {
 	LbPair                  solana.PublicKey `idx:"0"`  // Meteora Market
 	BinArrayBitmapExtension solana.PublicKey `idx:"1"`  // Meteora DLMM Program

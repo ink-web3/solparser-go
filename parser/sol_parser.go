@@ -54,8 +54,9 @@ func (s *SolParser) GetParseFuncByProgramId(programId string) (func(*rpc.ParsedI
 		consts.ORCA_TOKEN_SWAP_V2_PROGRAM_ID: s.ParseOrcaSwapEvent,
 		consts.PUMP_FUN_PROGRAM_ID:           s.ParsePumpFunSwapEvent,
 		consts.METEORA_DLMM_PROGRAM_ID:       s.ProcessMeteoraSwapEvent,
+		consts.METEORA_DAMM_V2_PROGRAM_ID:    s.ProcessMeteoraDammV2SwapEvent,
 		consts.PHNX_SWAP_PROGRAM_ID:          s.ParsePhoenixSwapEvent,
-		consts.LIFINITY_SWAP_V2_PROGRAM_ID:   s.ParseLifinitySwapEvent,
+		//consts.LIFINITY_SWAP_V2_PROGRAM_ID: s.ParseLifinitySwapEvent,
 	}
 	parseFunc, exists := parseFuncs[programId]
 	return parseFunc, exists
@@ -85,7 +86,7 @@ func (s *SolParser) processInstructions(
 		swapInsts, err := s.extractSwapInstructions(tx, ctx)
 
 		if err != nil {
-			fmt.Errorf("Unsupported swap instruction: [%d:%d] %s, %v", ctx.innerIdx+1, ctx.index+1, tx.Transaction.Signatures[0], err)
+			fmt.Printf("Unsupported swap instruction: [%d:%d] %s, %v", ctx.innerIdx+1, ctx.index+1, tx.Transaction.Signatures[0], err)
 			continue
 		}
 
@@ -95,19 +96,19 @@ func (s *SolParser) processInstructions(
 		var event *types.SwapTransactionEvent
 
 		//log.Info("swapInsts: %+v, ctx %+v %+v", swapInsts.swapIx.ProgramId, swapInsts.transferIx1.ProgramId, swapInsts.transferIx2.ProgramId)
-		if swapInsts.swapIx.ProgramId.String() == consts.LIFINITY_SWAP_V2_PROGRAM_ID {
-			if swapInsts.transferIx3 != nil {
-				event, err = s.ParseInstructionIntoSwapEvent(
-					tx,
-					ctx.eventIndexIdentifier,
-					swapInsts.swapIx,
-					swapInsts.transferIx1,
-					swapInsts.transferIx3,
-				)
-			} else {
-				fmt.Printf("lifinity v2 swap event has no transferIx3")
-				continue
-			}
+		if swapInsts.swapIx.ProgramId.String() == consts.METEORA_DAMM_V2_PROGRAM_ID {
+			event, err = s.ParseInstructionIntoSwapEvent(
+				tx,
+				ctx.eventIndexIdentifier,
+				swapInsts.swapIx,
+				swapInsts.transferIx1,
+				swapInsts.transferIx2,
+			)
+			//if swapInsts.transferIx3 != nil {
+			//} else {
+			//	fmt.Printf("lifinity v2 swap event has no transferIx3")
+			//	continue
+			//}
 		} else if swapInsts.swapIx.ProgramId.String() == consts.PUMP_FUN_PROGRAM_ID {
 			if swapInsts.transferIx2.ProgramId.String() == consts.PUMP_FUN_PROGRAM_ID {
 				// tricky: 卖
@@ -148,7 +149,8 @@ func (s *SolParser) processInstructions(
 			)
 		}
 		if err != nil {
-			fmt.Errorf("error parsing %d:%d swap event %s: swapIx %+v, transferIx1 %+v, transferIx2 %+v, err %+v", ctx.innerIdx+1, ctx.index+1, tx.Transaction.Signatures[0], swapInsts.swapIx, swapInsts.transferIx1, swapInsts.transferIx2, err)
+			//fmt.Errorf("error parsing %d:%d swap event %s: swapIx %+v, transferIx1 %+v, transferIx2 %+v, err %+v", ctx.innerIdx+1, ctx.index+1, tx.Transaction.Signatures[0], swapInsts.swapIx, swapInsts.transferIx1, swapInsts.transferIx2, err)
+			fmt.Printf("error parsing %d:%d swap event %s: swapIx %+v, transferIx1 %+v, transferIx2 %+v, err %+v", ctx.innerIdx+1, ctx.index+1, tx.Transaction.Signatures[0], swapInsts.swapIx, swapInsts.transferIx1, swapInsts.transferIx2, err)
 			continue
 		}
 		if event != nil {
@@ -271,7 +273,7 @@ func (s *SolParser) getInnerSwapInstructions(tx *rpc.GetParsedTransactionResult)
 			if isSwapInstruction(inst.ProgramId.String()) {
 				finalIdx, err := createUniqueIndex(int(innerInst.Index), innerIdx)
 				if err != nil {
-					fmt.Errorf("error creating unique index: %v", err)
+					fmt.Printf("error creating unique index: %v", err)
 					continue
 				}
 				contexts = append(contexts, InstructionContext{
